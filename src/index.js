@@ -1,17 +1,25 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
 import App from './App';
-import reportWebVitals from './reportWebVitals';
+import {
+  BrowserRouter,
+  Routes,
+  Route
+} from "react-router-dom";
+import ShareSecret from "./pages/ShareSecret/ShareSecret";
+import {ThemeProvider, createTheme} from '@mui/material/styles';
+
+let theme = createTheme();
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <BrowserRouter>
+  <ThemeProvider theme ={theme}>
+    <Routes>
+      <Route path="/" element={<App />} />
+      <Route path="share" element={<ShareSecret />} />
+    </Routes>
+    </ThemeProvider>
+  </BrowserRouter>,
   document.getElementById('root')
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
