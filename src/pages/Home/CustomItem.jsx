@@ -31,6 +31,8 @@ const useStyles = makeStyles((theme) => ({
 function CustomItem(props) {
     const classes = useStyles();
     const data = props.data;
+    let dateString = data.secret_date.split(".")[0].replace("T"," ");
+
     return (
         <Grid item xs={12}>
             <Card className={classes.card}>
@@ -50,20 +52,20 @@ function CustomItem(props) {
                         }}>
                             <Box>
                                 <Typography variant="subtitle1" color="textSecondary" fontSize="13px">
-                                    #1
+                                    {"#"+data.secret_id}
                                 </Typography>
                             </Box>
                             <Box>
                             <Typography variant="subtitle1" color="textSecondary" fontSize="13px">
-                                    2021-10-12 13:00
+                                    {dateString}
                                 </Typography>
                             </Box>
                         </Box>
                         <Typography variant="body1" paragraph className={classes.text}>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque suscipit repellat vitae nihil facere blanditiis, quia, ea distinctio vero laudantium laborum minima quos, aspernatur error quae! Harum, ducimus. Perferendis, est?
+                {data.secret_data}
               </Typography>
               <Typography variant="subtitle1" style={{color: '#45695D'}} fontSize="13px" textAlign ="right">
-                                    Anonim
+                                   {data.person_name==null?"Anonim":data.person_name}
                                 </Typography>
                     </CardContent>
                 </div>
