@@ -5,6 +5,9 @@ class SecretDataService {
     return http.get("/secret/all", { params });
   }
 
+  create(data) {
+    return http.post("/secret", data);
+  }
   // other CRUD methods
 }
 
