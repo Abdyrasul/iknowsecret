@@ -16,7 +16,9 @@ let theme = createTheme();
 const useStyles = makeStyles((theme) => ({
     card: {
         display: "flex",
-        borderRadius: 20
+        borderRadius: 20,
+        borderColor: 'primary.main',
+        backgroundColor: "#F2FFE9"
       },
       cardDetails: {
         flex: 1,
@@ -64,8 +66,8 @@ function CustomItem(props) {
                         <Typography variant="body1" paragraph className={classes.text}>
                 {data.secret_data}
               </Typography>
-              <Typography variant="subtitle1" style={{color: '#45695D'}} fontSize="13px" textAlign ="right">
-                                   {data.person_name==null?"Anonim":data.person_name}
+              <Typography variant="subtitle1" style={{color: '#F14A16'}} fontSize="13px" textAlign ="right">
+                                   {data.person_name==false?"Anonim":data.person_name}
                                 </Typography>
                     </CardContent>
                 </div>

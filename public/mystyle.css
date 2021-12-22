@@ -1,19 +1,13 @@
-body{
-    background-image: url('1.jpg');
-    background-repeat: no-repeat;
-    /* background-size: auto; */
-    background-size: cover;
-    /* opacity: 0.6; */
+body, .root{
+
+    margin: 0px;
+    padding: 0px;   
+ /* background: linear-gradient(90deg, #FC466B 0%, #3F5EFB 100%); */
+
+ background: #CC95C0;  /* fallback for old browsers */
+ background: -webkit-linear-gradient(to right, #7AA1D2, #DBD4B4, #CC95C0);  /* Chrome 10-25, Safari 5.1-6 */
+ background: linear-gradient(to right, #7AA1D2, #DBD4B4, #CC95C0); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+ 
+
 }
 
-/* body::after {
-    content: "";
-    background: url('1.jpg');
-    opacity: 0.5;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    position: absolute;
-    z-index: -1;   
-  } */

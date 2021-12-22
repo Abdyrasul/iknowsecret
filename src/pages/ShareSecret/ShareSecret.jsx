@@ -6,24 +6,40 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import SendIcon from '@mui/icons-material/Send';
 import Button from '@mui/material/Button';
+import { withTranslation } from 'react-i18next';
+import SecretDataService from "../../../src/services/secret.service";
+import Snackbar from '@mui/material/Snackbar';
 
-// import Footer from "../../components/Footer";
+import Footer from "../../components/Footer";
 
-export default class ShareSecret extends Component {
+
+
+
+
+class ShareSecret extends Component {
     constructor(props) {
         super(props);
         this.onChangeText = this.onChangeText.bind(this);
         this.onChangeName = this.onChangeName.bind(this);
         this.saveSecret = this.saveSecret.bind(this);
+        // this.handleClick = this.handleClick.bind(this);
+        this.handleClose  = this.handleClose .bind(this);
         // this.newSecret = this.newSecret.bind(this);
 
         this.state = {
             id: null,
             text: "",
             name: "",
+            open: false,
+            vertical: 'bottom',
+            horizontal: 'center',
+            snackbartext: ""
         };
     }
 
+    handleClose = () => {
+        this.setState({open: false });
+      };
 
     onChangeText(e) {
         this.setState({
@@ -40,31 +56,40 @@ export default class ShareSecret extends Component {
     saveSecret() {
 
         var data = {
-            text: this.state.text,
-            name: this.state.name
+            secret_data: this.state.text,
+            person_name: this.state.name
         };
 
-        
-        if(data.text == null || data.text.isEmpty()){
+
+        if (data.secret_data == null || data.secret_data.length == 0) {
             console.log('Text bos');
             return;
         }
 
-        TutorialDataService.create(data)
+        SecretDataService.create(data)
             .then(response => {
                 this.setState({
-                    id: response.data.id,
-                    text: response.data.secret_data,
-                    name: response.person_name,
+                    text: "",
+                    name: "",
+                    open: true,
+                    snackbartext : "SUCCESSFUL"
                 });
-                console.log(response.data);
+                // console.log('Sonuc Open: ' + this.state.open);
+
             })
             .catch(e => {
                 console.log(e);
+                this.setState({
+                    text: data.secret_data,
+                    name: data.person_name,
+                    open: true,
+                    snackbartext : "UNSUCCESSFUL"
+                });
             });
     }
 
     render() {
+        const { t } = this.props;
         return (
             <React.Fragment>
                 <CssBaseline />
@@ -82,7 +107,7 @@ export default class ShareSecret extends Component {
                             value={this.state.text}
                             onChange={this.onChangeText}
                             rows={7}
-                            placeholder="Share your secret with us"
+                            placeholder={t('Share_your_secret_with_us')}
                             inputProps={{ maxLength: 280 }}
                             style={{ marginBottom: "5", backgroundColor: "white" }}
                         />
@@ -98,27 +123,41 @@ export default class ShareSecret extends Component {
                         <TextField fullWidth id="fullWidth"
                             value={this.state.name}
                             onChange={this.onChangeName}
-                            label="Name"
+                            label={t('Name')}
                             focused
-                            placeholder="Optional"
+                            placeholder={t('Optional')}
                             size="small"
                             style={{ marginBottom: "5", backgroundColor: "white" }}
                         />
                     </Box>
 
-                    <Button 
-                    onClick={this.saveSecret}
-                    variant="contained" 
-                    color="success" 
-                    endIcon={<SendIcon />}>
-                        Send
+                    <Button
+                        onClick={this.saveSecret}
+                        variant="contained"
+                        color="success"
+                        endIcon={<SendIcon />}>
+                        {t('Send')}
                     </Button>
+                    <Snackbar
+        anchorOrigin={ {
+            vertical: 'bottom',
+            horizontal: 'center',
+          } }
+        open={this.state.open}
+        onClose={this.handleClose}
+        message={t(this.state.snackbartext)}
+        key={this.state.vertical + this.state.horizontal}
+        autoHideDuration={3000}
+      />
                     {/* <Container maxWidth="sm">
           </Container> */}
 
                 </Container>
-                {/* <Footer></Footer> */}
+                
+                <Footer></Footer>
             </React.Fragment>
         );
     }
 }
+
+export default withTranslation()(ShareSecret);

@@ -9,6 +9,7 @@ import CustomItem from './pages/Home/CustomItem';
 import makeStyles from '@mui/styles/makeStyles';
 import Footer from "./components/Footer";
 import SecretDataService from "../src/services/secret.service";
+// import Image from "./public/1.jpg";
 
 // const useStyles = makeStyles((theme) => ({
   
@@ -111,7 +112,7 @@ export default class App extends Component {
       {/* <h1>sfsdfdsf</h1> */}
        <CssBaseline />
       
-      <Container maxWidth="sm" margin="auto">
+      <Container  maxWidth="sm" margin="auto">
       <Header name = "HOME"></Header>
       <Container maxWidth="sm">
       <Grid
