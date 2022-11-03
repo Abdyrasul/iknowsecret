@@ -9,7 +9,7 @@ import {
 } from "react-router-dom";
 import ShareSecret from "./pages/ShareSecret/ShareSecret";
 import {ThemeProvider, createTheme} from '@mui/material/styles';
-// import { Container } from '@mui/material';
+import { Container } from '@mui/material';
 // import Image from "./public/1.jpg";
 // import { CssBaseline } from '@mui/material';
 const theme = createTheme({

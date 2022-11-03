@@ -134,7 +134,7 @@ class ShareSecret extends Component {
                     <Button
                         onClick={this.saveSecret}
                         variant="contained"
-                        color="success"
+                        // color="success"
                         endIcon={<SendIcon />}>
                         {t('Send')}
                     </Button>

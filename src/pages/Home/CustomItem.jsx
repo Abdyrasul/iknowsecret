@@ -8,6 +8,8 @@ import CardContent from "@mui/material/CardContent";
 import { createTheme} from '@mui/material/styles';
 import makeStyles from '@mui/styles/makeStyles';
 import Typography from "@mui/material/Typography";
+import Chip from '@mui/material/Chip';
+import Stack from '@mui/material/Stack';
 import '../../style.css';
 // import '@fontsource/roboto/400.css';
 
@@ -33,8 +35,12 @@ const useStyles = makeStyles((theme) => ({
 function CustomItem(props) {
     const classes = useStyles();
     const data = props.data;
-    let dateString = data.secret_date.split(".")[0].replace("T"," ");
-
+    let dateStringTemp = data.secret_date.split(".")[0].replace("T"," ");
+    let d = new Date(dateStringTemp);
+    let dateString = d.getDate()  + "-" + (d.getMonth()+1) + "-" + d.getFullYear() + " " +
+d.getHours() + ":" + d.getMinutes();
+var name = data.person_name==null?"Anonim":data.person_name;
+    
     return (
         <Grid item xs={12}>
             <Card className={classes.card}>
@@ -66,9 +72,12 @@ function CustomItem(props) {
                         <Typography variant="body1" paragraph className={classes.text}>
                 {data.secret_data}
               </Typography>
-              <Typography variant="subtitle1" style={{color: '#F14A16'}} fontSize="13px" textAlign ="right">
+              <Stack direction = "row" justifyContent="flex-end">
+              <Chip label = {name} align ="right" variant="outlined" size="small" />
+              </Stack>
+              {/* <Typography variant="subtitle1" style={{color: '#F14A16'}} fontSize="13px" textAlign ="right">
                                    {data.person_name==false?"Anonim":data.person_name}
-                                </Typography>
+                                </Typography> */}
                     </CardContent>
                 </div>
             </Card>

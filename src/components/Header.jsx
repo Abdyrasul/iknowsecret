@@ -77,7 +77,7 @@ function Header(props) {
                         // fontSize = {22}
                             // sx={{ marginRight:"5" }}
                         >
-                            Paýlaş
+                            GEP
                         </Typography>
                     {/* <SvgIcon >
                         <Logo />
@@ -134,7 +134,7 @@ function Header(props) {
                     </Box>
                 </Box>
                 <Box>
-                    <a href="https://www.instagram.com/abdiresul/">
+                    <a href="https://twitter.com/GepGurrun">
                         <TwitterIcon className={classes.socialIcons}
                         //    sx={{ color: pink[500] }}
                         ></TwitterIcon>

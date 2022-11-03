@@ -75,7 +75,7 @@ export default class App extends Component {
           secrets: secrets,
           count: totalPages,
         });
-        console.log(response.data);
+        // console.log(response.data);
       })
       .catch((e) => {
         console.log(e);
